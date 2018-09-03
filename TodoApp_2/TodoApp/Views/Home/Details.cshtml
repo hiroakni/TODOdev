@@ -1,0 +1,44 @@
+﻿@model TodoApp.Models.Todo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>登録情報詳細</h2>
+
+<div>
+    <h4>登録情報</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.Raw(ViewBag.viewDetailTxt)
+        </dd>
+
+        <!-- チェックボックスはとりま非活性
+            <dt>
+                @Html.DisplayNameFor(model => model.Done)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Done)
+            </dd>
+        -->
+        </dl>
+    </div>
+    <div>
+        <a href='@Url.Action("Edit", "Home",new { id = Model.Id })' class="btn btn-warning">編集</a>
+        <a href='@Url.Action("Index")' class="btn btn-secondary">一覧画面に戻る</a>
+    </div>

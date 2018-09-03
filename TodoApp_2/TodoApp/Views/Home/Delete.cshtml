@@ -1,0 +1,80 @@
+﻿@model TodoApp.Models.Todo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<h2>削除</h2>
+
+<div>
+    <h4>登録情報</h4>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Detail, 5, 500, new { @class = "form-control" , @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.PasswordFor(model => model.Pass, new { @class = "form-control password" })
+            </div>
+            <div class="col-md-8">
+                @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+                <div class="text-danger">@ViewBag.errMessage</div>
+            </div>
+        </div>
+        <!-- チェックボックスはとりま非表示
+            <div class="form-group">
+                @Html.LabelFor(model => model.Done, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Done)
+                        @Html.ValidationMessageFor(model => model.Done, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        -->
+        <div class="form-actions no-color">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal">
+                削除
+            </button>
+            <a href='@Url.Action("Index")' class="btn btn-secondary">一覧画面に戻る</a>
+        </div>
+        <!-- モーダルダイアログ -->
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title" id="demoModalTitle">
+                            削除
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-danger">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>削除しますか？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        <input type="hidden" name="Title" id="Title" value="@Model.Title" />
+                        <input type="hidden" name="Detail" id="Detail" value="@Model.Detail" />
+                        <input type="button" value="削除" onclick="submit()" class="btn btn-danger" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
