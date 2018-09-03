@@ -4,7 +4,7 @@ namespace TodoApp.Models
 {
     public class AppContext : DbContext
     {
-        public AppContext() : base("name=TodoDbConnection")
+        public AppContext() : base("name=TNSystemsConnection")
         {
         }
         public DbSet<User> Users { get; set; }
