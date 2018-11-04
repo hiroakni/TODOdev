@@ -18,5 +18,7 @@ namespace TodoApp.Models
 
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Todo> Todoes { get; set; }
+        public virtual ICollection<TransactionInfo> TransactionInfos { get; set; }
+
     }
 }

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<TodoApp.Models.TransactionInfo>
+
+@{
+    ViewBag.Title = "取引情報一覧";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var cnt = 1;
+}
+<h2>取引情報一覧</h2>
+<a href='@Url.Action("CreateTransactionInfo", "Home")' class="btn btn-primary">新規登録</a>
+<!-- あそび -->
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center">　</div>
+    <div class="col-md-4"></div>
+</div>
+<table class="table table-hover">
+    <tr class="thead-dark">
+        <th>
+            #
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToushouCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseFund)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionFund)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnOnInvestment)
+
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @cnt
+            @{ cnt++; }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToushouCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseFund)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionFund)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnOnInvestment)
+        </td>
+
+    </tr>
+    }
+</table>

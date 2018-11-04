@@ -20,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" href='@Url.Action("Index", "Home")'>登録情報一覧</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href='@Url.Action("ViewTransactionInfo", "Home")'>取引情報一覧</a>
+            </li>
             @if (roles.Contains("Administrators"))
             {
                 <li class="nav-item">

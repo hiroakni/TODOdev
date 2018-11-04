@@ -24,6 +24,13 @@ namespace TodoApp.Controllers
             return View(user.Todoes.ToArray());
         }
 
+        public ActionResult ViewTransactionInfo()
+        {
+            int userId = (int)Session["AuthUserId"];
+            var user = db.Users.Where(u => u.Id == userId).First();
+
+            return View(user.TransactionInfos.ToArray());
+        }
         // GET: Home/Details/5
         public ActionResult Details(int? id)
         {
@@ -45,6 +52,11 @@ namespace TodoApp.Controllers
 
         // GET: Home/Create
         public ActionResult Create()
+        {
+            return View();
+        }
+        // GET: Home/CreateTransactionInfo
+        public ActionResult CreateTransactionInfo()
         {
             return View();
         }
@@ -72,7 +84,28 @@ namespace TodoApp.Controllers
 
             return View(todo);
         }
+        // POST: Home/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateTransactionInfo([Bind(Include = "Id,TransactionTitle,ToushouCode,PurchaseFund,TransactionFund,PurchaseCount,TransactionCount")] TransactionInfo transactionInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                int userId = (int)Session["AuthUserId"];
+                var user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+                if (user != null)
+                {
+                    transactionInfo.User = user;
+                }
+                db.TransactionInfos.Add(transactionInfo);
+                db.SaveChanges();
+                return RedirectToAction("ViewTransactionInfo");
+            }
 
+            return View(transactionInfo);
+        }
         // GET: Home/Edit/5
         public ActionResult Edit(int? id)
         {
