@@ -163,6 +163,7 @@
     <Content Include="Views\Shared\_LayoutPaga2.cshtml" />
     <Content Include="Views\Home\ViewTransactionInfo.cshtml" />
     <Content Include="Views\Home\CreateTransactionInfo.cshtml" />
+    <Content Include="Views\Home\EditTransactionInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

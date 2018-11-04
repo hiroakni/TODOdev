@@ -120,7 +120,6 @@ namespace TodoApp.Controllers
             }
             return View(todo);
         }
-
         // POST: Home/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -154,6 +153,37 @@ namespace TodoApp.Controllers
                 return RedirectToAction("Index");
             }
             return View(todo);
+        }
+        // GET: Home/Edit/5
+        public ActionResult EditTransactionInfo(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TransactionInfo transactionInfo = db.TransactionInfos.Find(id);
+            if (transactionInfo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(transactionInfo);
+        }
+
+        // POST: Home/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTransactionInfo([Bind(Include = "Id,TransactionTitle,ToushouCode,PurchaseFund,TransactionFund,PurchaseCount,TransactionCount")] TransactionInfo transactionInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(transactionInfo).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("ViewTransactionInfo");
+            }
+            return View(transactionInfo);
         }
 
         // GET: Home/Delete/5
