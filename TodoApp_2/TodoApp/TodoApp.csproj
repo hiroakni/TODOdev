@@ -164,6 +164,7 @@
     <Content Include="Views\Home\ViewTransactionInfo.cshtml" />
     <Content Include="Views\Home\CreateTransactionInfo.cshtml" />
     <Content Include="Views\Home\EditTransactionInfo.cshtml" />
+    <Content Include="Views\Home\EditTransactionSellInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

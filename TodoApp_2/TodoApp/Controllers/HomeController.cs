@@ -89,7 +89,7 @@ namespace TodoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateTransactionInfo([Bind(Include = "Id,TransactionTitle,ToushouCode,PurchaseFund,TransactionFund,PurchaseCount,TransactionCount")] TransactionInfo transactionInfo)
+        public ActionResult CreateTransactionInfo([Bind(Include = "Id,TransactionTitle,ToushouCode,PurchaseFund,PurchaseCount,PurchaseDate")] TransactionInfo transactionInfo)
         {
             if (ModelState.IsValid)
             {
@@ -174,7 +174,39 @@ namespace TodoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditTransactionInfo([Bind(Include = "Id,TransactionTitle,ToushouCode,PurchaseFund,TransactionFund,PurchaseCount,TransactionCount")] TransactionInfo transactionInfo)
+        public ActionResult EditTransactionInfo([Bind(Include = "Id,TransactionTitle,ToushouCode,PurchaseFund,PurchaseCount,TransactionDate")] TransactionInfo transactionInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(transactionInfo).State = EntityState.Modified;
+                var aa = transactionInfo.PurchaseDate;
+                db.SaveChanges();
+
+                return RedirectToAction("ViewTransactionInfo");
+            }
+            return View(transactionInfo);
+        }
+        // GET: Home/Edit/5
+        public ActionResult EditTransactionSellInfo(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TransactionInfo transactionInfo = db.TransactionInfos.Find(id);
+            if (transactionInfo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(transactionInfo);
+        }
+
+        // POST: Home/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTransactionSellInfo([Bind(Include = "Id,TransactionTitle,ToushouCode,TransactionFund,TransactionCount,TransactionDate")] TransactionInfo transactionInfo)
         {
             if (ModelState.IsValid)
             {
@@ -185,7 +217,6 @@ namespace TodoApp.Controllers
             }
             return View(transactionInfo);
         }
-
         // GET: Home/Delete/5
         public ActionResult Delete(int? id)
         {
