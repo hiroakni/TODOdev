@@ -1,5 +1,5 @@
 ﻿# 取引情報システム（TNSystems）の概要
- 
+ #TODOシステムの改造版
 #名前は適当です。TNSystemsに特に意味はないです。
 
 #システム構成環境はC#、MVC.NET、EntityFramework
