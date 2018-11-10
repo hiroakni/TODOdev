@@ -112,14 +112,22 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\inputPurchaseDate.js" />
+    <Content Include="Scripts\inputTransactionDate.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.1.7.0.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\legacy.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\picker.date.js" />
+    <Content Include="Scripts\picker.js" />
+    <Content Include="Style\Defalut.css" />
+    <Content Include="Style\Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +173,7 @@
     <Content Include="Views\Home\CreateTransactionInfo.cshtml" />
     <Content Include="Views\Home\EditTransactionInfo.cshtml" />
     <Content Include="Views\Home\EditTransactionSellInfo.cshtml" />
+    <Content Include="Style\Defalut.date.css" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
