@@ -5,14 +5,21 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var test = "";
 }
-
+<style>
+    body {
+        color: #000000;
+        background-color: #FFFFFF;
+        background-image: url("../../image/gazou2.jpg");
+    }
+</style>
 <h2>買付情報登録</h2>
 <link rel="stylesheet" href="../Style/Defalut.date.css">
 <link rel="stylesheet" href="../Style/Defalut.css">
-<script type="text/javascript" src="../Scripts/jquery.1.7.0.js"></script>
+<script type="text/javascript" src="../Scripts/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="../Scripts/picker.js"></script>
 <script type="text/javascript" src="../Scripts/picker.date.js"></script>
 <script type="text/javascript" src="../Scripts/legacy.js"></script>
+<script type="text/javascript" src="../Scripts/ja_JP.js"></script>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

@@ -5,8 +5,15 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var cnt = 1;
 }
+<style>
+    body {
+        color: #FFFFFF;
+        background-color: #000000;
+        background-image: url("../../image/gazou1.jpg");
+    }
+</style>
 <h2>取引情報一覧</h2>
-<a href='@Url.Action("CreateTransactionInfo", "Home")' class="btn btn-primary">新規登録</a>
+<a href='@Url.Action("CreateTransactionInfo", "Home")' class="btn btn-success">新規登録</a>
 <!-- あそび -->
 <div class="row">
     <div class="col-md-4"></div>
@@ -51,49 +58,49 @@
     </tr>
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @cnt
-            @{ cnt++; }
-        </td>
-        <td>
-            <a href='@Url.Action("EditTransactionInfo", "Home",new { id = item.Id })'>
-             @Html.DisplayFor(modelItem => item.TransactionTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToushouCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PurchaseFund)
-            円
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TransactionFund)
-            円
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PurchaseCount)
-            株
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TransactionCount)
-            株
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PurchaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TransactionDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReturnOnInvestment)
-        </td>
-        <td>
-            <div>
-                <a href='@Url.Action("EditTransactionSellInfo", "Home",new { id = item.Id })' class="btn btn-warning">売付情報入力</a>
-            </div>
-        </td>
-
-    </tr>
-    }
-</table>
+            <tr>
+                <td>
+                    <a href='@Url.Action("EditTransactionInfo", "Home",new { id = item.Id })'>
+                        @cnt
+                    </a>
+                        @{ cnt++; }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionTitle)
+                </td>
+                <td class="text-lg-center">
+                    @Html.DisplayFor(modelItem => item.ToushouCode)
+                </td>
+                <td class="text-lg-right">
+                    @Html.DisplayFor(modelItem => item.PurchaseFund)
+                    円
+                </td>
+                <td class="text-lg-right">
+                    @Html.DisplayFor(modelItem => item.TransactionFund)
+                    円
+                </td>
+                <td class="text-lg-right">
+                    @Html.DisplayFor(modelItem => item.PurchaseCount)
+                    株
+                </td>
+                <td class="text-lg-right">
+                    @Html.DisplayFor(modelItem => item.TransactionCount)
+                    株
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnOnInvestment)
+                </td>
+                <td>
+                    <div>
+                        <a href='@Url.Action("EditTransactionSellInfo", "Home",new { id = item.Id })' class="btn btn-default">売付情報入力</a>
+                    </div>
+                </td>
+            </tr>
+            }
+    </table>
